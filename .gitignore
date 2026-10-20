@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+# готовые видео и рабочие файлы рендера (видео — на странице для скачивания)
+output/*/*.mp4
+output/*/_segments/
+output/*/qc/
+audio/*/mix*.wav

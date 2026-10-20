@@ -1,0 +1,710 @@
+# PIXEL PINES — S1E1 «The Letter from Tomorrow»
+# Формат: сцена = декорация + расстановка + биты. Бит — реплика (say), пауза (wait),
+# действие (act/move), звук (sfx), эффект (fx), вставка-деталь (insert), камера (cam).
+# Камеру по умолчанию ставит «режиссёр» (studio/director.py): общий план в начале,
+# средние/крупные на репликах, реакции. Время в секундах.
+id: ep101
+series: Pixel Pines
+title: The Letter from Tomorrow
+logline: >
+  Theo Bramble finds a letter in his own handwriting, postmarked three days from now:
+  "Don't let them turn off the Lantern." With June, Dot and a dog who talks through
+  a translator collar, he has until Saturday to find out why.
+date_today: Wednesday, October 21
+voices:
+  theo:    {voice: TX3LPaxmHKxFdv7VOQHJ, name: Liam,   pitch: 1.5, stability: 0.4}
+  june:    {voice: EXAVITQu4vr4xnSDxMaL, name: Sarah,  pitch: 0.5, stability: 0.5}
+  dot:     {voice: FGY2WhTYpPnrIDTdsKH5, name: Laura,  pitch: 1.0, stability: 0.4}
+  biscuit: {voice: JBFqnCBsd6RMkjVDRZzb, name: George, pitch: 0.0, stability: 0.5, fx: collar}
+  courier: {voice: nPczCjzI2devNBz1zQrb, name: Brian,  pitch: -1.0, stability: 0.6}
+
+scenes:
+# ------------------------------------------------------------------ COLD OPEN
+- id: s01
+  set: main_street
+  light: night
+  music: mystery
+  ambience: night_town
+  transition: fade
+  cast:
+    courier: {x: -200, bike: true, facing: 1}
+  beats:
+  - cam: {shot: wide, pan: [0.15, 0.55], dur: 6.0}
+  - wait: 1.5
+  - act: courier
+    move: 1250
+    dur: 5.0
+  - sfx: bike_bell
+  - wait: 4.6
+  - sfx: clock_chime
+  - cam: {shot: medium, on: courier}
+  - act: courier
+    look: [0.3, -1]
+  - wait: 1.4
+  - say: courier
+    text: "[softly] Seven minutes late. As always."
+  - wait: 0.8
+  - cam: {shot: wide}
+  - act: courier
+    move: 2900
+    dur: 4.5
+  - wait: 3.0
+
+- id: s02
+  set: maple_row
+  light: night
+  music: mystery
+  ambience: night_street
+  transition: cut
+  cast:
+    courier: {x: 1180, facing: 1, pose: idle}
+    biscuit: {x: 930, facing: 1, hidden: true}
+  beats:
+  - cam: {shot: wide, push: 0.08}
+  - wait: 1.2
+  - act: courier
+    pose: hold
+    prop: letter
+  - fx: {type: pixels, at: courier, count: 40}
+  - sfx: shimmer
+  - wait: 1.8
+  - cam: {shot: insert, item: mailbox_open}
+  - sfx: mailbox
+  - wait: 1.6
+  - cam: {shot: medium, on: courier}
+  - act: courier
+    pose: idle
+    prop: null
+  - say: courier
+    text: "[warmly] Right on time."
+  - wait: 0.6
+  - cam: {shot: wide}
+  - act: courier
+    vanish: true
+  - sfx: whoosh
+  - fx: {type: pixels, at: courier, count: 80}
+  - wait: 1.6
+  - act: biscuit
+    appear: true
+    expr: sly
+  - sfx: dog_door
+  - cam: {shot: close, on: biscuit}
+  - say: biscuit
+    text: "I saw nothing. I was asleep. Magnificently asleep."
+  - wait: 0.8
+  - title: true
+
+# ------------------------------------------------------------------ ACT ONE
+- id: s03
+  set: maple_row
+  light: morning
+  music: curious
+  ambience: morning_birds
+  transition: fade
+  cast:
+    theo: {x: 520, facing: 1, expr: happy}
+    biscuit: {x: 380, facing: 1}
+    june: {x: 2700, facing: -1, hidden: true}
+  beats:
+  - cam: {shot: wide}
+  - sfx: door
+  - wait: 0.6
+  - act: theo
+    move: 900
+    dur: 1.6
+  - act: biscuit
+    move: 760
+    dur: 1.6
+  - wait: 1.6
+  - say: theo
+    text: "Morning, Biscuit! Anything exciting happen last night?"
+    pose: talk
+  - say: biscuit
+    text: "Absolutely nothing. Also, check the mailbox. For no reason."
+    expr: sly
+  - act: theo
+    move: 1060
+    dur: 0.9
+    expr: neutral
+  - wait: 0.9
+  - sfx: mailbox
+  - act: theo
+    pose: hold
+    prop: letter
+    expr: surprised
+  - fx: {type: pixels, at: theo, count: 25}
+  - sfx: shimmer
+  - wait: 0.8
+  - cam: {shot: insert, item: envelope}
+  - wait: 3.2
+  - say: theo
+    text: "[confused] Postmarked... Saturday? Today's Wednesday."
+    expr: thinking
+  - act: theo
+    prop: letter_open
+  - sfx: paper
+  - wait: 0.5
+  - cam: {shot: insert, item: letter}
+  - wait: 5.5
+  - say: theo
+    text: "That's my handwriting. That's not normal. That's not even a LITTLE normal."
+    expr: worried
+  - act: june
+    enter: {from: 2700, to: 1330, dur: 2.2, bike: true}
+  - sfx: bike_brakes
+  - wait: 2.0
+  - say: june
+    text: "Theo! You're staring at a mailbox again."
+    expr: skeptical
+    pose: hips
+  - say: theo
+    text: "[excited] June. I got a letter. From me. From SATURDAY."
+    expr: excited
+    pose: point
+  - say: june
+    text: "Okay. Plan first, panic later. Let me see."
+    expr: determined
+  - act: june
+    pose: hold
+    prop: letter_open
+  - act: theo
+    pose: idle
+    prop: null
+  - wait: 0.6
+  - say: june
+    text: "The postmark's real. The ink is dry. And the paper is... warm?"
+    expr: thinking
+  - fx: {type: pixels, at: june, count: 35}
+  - sfx: shimmer
+  - say: june
+    text: "[quietly] Okay. That's new."
+    expr: awe
+  - say: theo
+    text: "Hold it up. I need proof."
+    pose: camera
+    prop: camera
+    expr: determined
+  - sfx: camera_flash
+  - fx: {type: flash}
+  - wait: 0.5
+  - cam: {shot: insert, item: photo_letter}
+  - wait: 3.6
+  - say: theo
+    text: "Look! In the photo it's glowing. Like an arrow. Pointing at the old Lumen Mill."
+    expr: excited
+    pose: point
+  - say: june
+    text: "The letter says bring Dot."
+    expr: neutral
+  - say: theo
+    text: "Then we go see the one person in town who can scan a letter from the future."
+    expr: grin
+    pose: talk
+  - say: biscuit
+    text: "And who might also have breakfast."
+    expr: happy
+
+# ------------------------------------------------------------------ ACT TWO
+- id: s04
+  set: garage
+  light: day
+  music: gadget
+  ambience: garage_hum
+  transition: wipe
+  cast:
+    dot: {x: 1160, facing: -1, expr: excited, pose: hold, prop: sniffer}
+    theo: {x: 520, facing: 1}
+    june: {x: 330, facing: 1}
+    biscuit: {x: 760, facing: 1}
+  beats:
+  - cam: {shot: wide}
+  - wait: 0.6
+  - say: dot
+    text: "[excited] Stand back! Glitch Sniffer Mark Seven is about to make history!"
+    expr: excited
+  - sfx: gadget_whir
+  - act: dot
+    shake: 1.6
+  - wait: 1.6
+  - sfx: pop
+  - fx: {type: confetti, at: dot}
+  - act: dot
+    expr: surprised
+  - wait: 1.2
+  - say: dot
+    text: "[proudly] Technically... that was a success."
+    expr: proud
+  - say: june
+    text: "Dot. What was it supposed to do?"
+    expr: skeptical
+    pose: hips
+  - say: dot
+    text: "Sniff glitches! Find anything in town that flickers when it shouldn't."
+    expr: happy
+    pose: talk
+  - say: theo
+    text: "Like this?"
+    pose: hold
+    prop: letter
+    expr: sly
+  - sfx: beeps
+  - act: dot
+    expr: surprised
+    pose: hold
+    prop: sniffer
+  - wait: 1.0
+  - say: dot
+    text: "[gasps] Whoa, whoa, whoa! This reading is off the chart. Literally. It went off the chart and onto the table!"
+    expr: excited
+  - say: dot
+    text: "This letter has the same signal as the pine trees on Flicker nights."
+    expr: awe
+  - say: theo
+    text: "It says, don't let them turn off the Lantern."
+    expr: worried
+  - act: june
+    pose: point
+  - say: june
+    text: "Wait. Look at your board, Dot."
+    expr: determined
+  - cam: {shot: insert, item: flyer}
+  - wait: 4.2
+  - say: june
+    text: "Lumen Mill. Demolition on Saturday. The same day as the postmark."
+    expr: thinking
+  - say: theo
+    text: "The Lantern in the mill tower. It's been burning since eighteen eighty-seven. With no electricity."
+    expr: thinking
+  - say: dot
+    text: "[worried] So if they knock down the mill... the Lantern goes out."
+    expr: worried
+  - say: june
+    text: "And something happens. Something big enough that Saturday-Theo wrote himself a letter."
+    expr: worried
+  - say: biscuit
+    text: "I would like to formally vote for staying here."
+    expr: worried
+  - say: dot
+    text: "Motion denied! You're coming, Biscuit. I upgraded your collar."
+    expr: grin
+  - say: biscuit
+    text: "[dryly] That is precisely what frightens me."
+    expr: sly
+  - say: dot
+    text: "Sandwich for the road? It's spinach. Mostly."
+    pose: hold
+    prop: sandwich
+    expr: happy
+  - say: theo
+    text: "Nope. Future me said no green sandwiches."
+    expr: grin
+    pose: shrug
+  - say: biscuit
+    text: "Future you is a coward. I accept."
+    expr: happy
+  - say: theo
+    text: "Okay. Okay, okay, okay. We go to the mill. Tonight. Before Saturday."
+    expr: determined
+    pose: fist
+  - say: june
+    text: "Plan first. Flashlights. Compass. Snacks."
+    expr: determined
+    pose: talk
+  - say: dot
+    text: "And the Sniffer!"
+    expr: excited
+    pose: cheer
+  - sfx: pop_small
+  - fx: {type: confetti, at: dot, count: 30}
+  - wait: 1.0
+
+- id: s045
+  set: forest
+  light: dusk
+  music: curious
+  ambience: forest_evening
+  transition: fade
+  cast:
+    june: {x: 300, facing: 1, pose: idle}
+    theo: {x: 130, facing: 1}
+    dot: {x: -40, facing: 1, prop: sniffer, pose: hold}
+    biscuit: {x: -200, facing: 1}
+  beats:
+  - cam: {shot: wide, pan: [0.0, 0.3], dur: 9.0}
+  - act: june
+    move: 1250
+    dur: 9.0
+  - act: theo
+    move: 1080
+    dur: 9.0
+  - act: dot
+    move: 900
+    dur: 9.0
+  - act: biscuit
+    move: 740
+    dur: 9.0
+  - wait: 0.8
+  - say: dot
+    text: "So why does everyone call it the Lumen Mill? Was Lumen a person?"
+    expr: thinking
+  - say: june
+    text: "Ada Lumen. A lantern maker. Mister Hollis at the library told me the whole story."
+    expr: neutral
+    pose: talk
+  - say: june
+    text: "In eighteen eighty-seven, something fell out of the sky and landed in Mirror Lake. Ada found a glowing stone on the shore."
+    expr: awe
+  - say: theo
+    text: "And she built a lantern factory around it."
+    expr: happy
+  - say: june
+    text: "Lanterns that never went out. The whole town grew up around their light."
+    expr: happy
+  - say: dot
+    text: "And then what?"
+    expr: excited
+  - say: june
+    text: "[quietly] In nineteen thirty-one, she closed the factory... and disappeared. People say she left one last message."
+    expr: worried
+  - say: theo
+    text: "What did it say?"
+    expr: surprised
+  - say: june
+    text: "Nobody knows. It was never found."
+    expr: sad
+  - fx: {type: flicker_on}
+  - sfx: shimmer
+  - wait: 1.6
+  - say: dot
+    text: "[whispers] Guys. The trees."
+    expr: awe
+    pose: point
+  - say: theo
+    text: "The Flicker. It never starts this early."
+    expr: awe
+  - act: biscuit
+    expr: surprised
+    jump: true
+  - sfx: glitch
+  - say: biscuit
+    text: "SQUIRREL. Squirrel! SQUIRREL!"
+    expr: surprised
+    glitch: true
+  - say: dot
+    text: "Ooh. Your collar's picking up interference."
+    expr: thinking
+  - say: biscuit
+    text: "[indignant] That was not interference. That was a very large squirrel."
+    expr: sly
+  - say: theo
+    text: "Come on. The mill is just past the ridge."
+    expr: determined
+    pose: point
+  - act: [june, theo, dot, biscuit]
+    move: 2700
+    dur: 3.0
+  - wait: 2.6
+
+# ------------------------------------------------------------------ ACT THREE
+- id: s05
+  set: mill_exterior
+  light: dusk
+  music: tension
+  ambience: crickets
+  transition: fade
+  cast:
+    june: {x: -120, facing: 1, pose: flashlight, prop: flashlight}
+    theo: {x: -300, facing: 1}
+    dot: {x: -460, facing: 1, prop: sniffer, pose: hold}
+    biscuit: {x: -620, facing: 1}
+  beats:
+  - cam: {shot: wide, pan: [0.0, 0.25], dur: 7.0}
+  - wait: 1.2
+  - act: june
+    move: 1100
+    dur: 4.5
+  - act: theo
+    move: 920
+    dur: 4.5
+  - act: dot
+    move: 760
+    dur: 4.5
+  - act: biscuit
+    move: 600
+    dur: 4.5
+  - wait: 4.8
+  - act: june
+    extra_spin: true
+  - say: june
+    text: "My compass is pointing at the tower. Compasses don't do that."
+    expr: worried
+  - say: theo
+    text: "Today, apparently, they do."
+    expr: awe
+  - say: biscuit
+    text: "I shall bravely guard the back. Of the group. The very far back."
+    expr: worried
+  - act: biscuit
+    move: 420
+    dur: 1.2
+  - fx: {type: tower_shadow}
+  - wait: 1.5
+  - say: theo
+    text: "[whispers] Did you see that? Someone's up there."
+    expr: surprised
+    pose: point_up
+  - say: june
+    text: "Stay together. I go first."
+    expr: determined
+    pose: flashlight
+    prop: flashlight
+  - act: june
+    move: 1800
+    dur: 2.6
+  - act: theo
+    move: 1640
+    dur: 2.6
+  - act: dot
+    move: 1500
+    dur: 2.6
+  - act: biscuit
+    move: 1380
+    dur: 2.8
+  - sfx: door_creak
+  - wait: 2.8
+
+- id: s06
+  set: mill_interior
+  light: night
+  music: wonder
+  ambience: mill_room
+  transition: fade
+  cast:
+    june: {x: 1060, facing: 1, pose: flashlight, prop: flashlight, expr: awe}
+    theo: {x: 900, facing: 1, expr: awe}
+    dot: {x: 750, facing: 1, prop: sniffer, pose: hold, expr: awe}
+    biscuit: {x: 600, facing: 1}
+    courier: {x: 1760, facing: -1, hidden: true}
+  beats:
+  - cam: {shot: wide, pan: [0.5, 0.35], dur: 5.0}
+  - wait: 2.5
+  - say: dot
+    text: "[whispers] It's beautiful."
+  - say: theo
+    text: "[in awe] The Lantern."
+  - wait: 1.0
+  - cam: {shot: wide}
+  - fx: {type: lantern_dim}
+  - sfx: power_down
+  - wait: 1.2
+  - fx: {type: stairs_glitch}
+  - sfx: glitch
+  - say: june
+    text: "[alarmed] The stairs! They're glitching!"
+    expr: scared
+    pose: point
+  - say: theo
+    text: "It's getting weaker. Like it knows what's coming."
+    expr: worried
+  - act: june
+    move: 1330
+    dur: 1.4
+  - wait: 1.0
+  - say: june
+    text: "There's a plaque. Hold on."
+    expr: determined
+  - cam: {shot: insert, item: plaque}
+  - wait: 1.2
+  - say: june
+    text: "[reading] Keep one light burning, and the Pines will remember the way home. A. L."
+  - wait: 1.0
+  - say: theo
+    text: "A. L.? Like Ada Lumen?"
+    expr: thinking
+  - act: theo
+    pose: camera
+    prop: camera
+  - sfx: camera_flash
+  - fx: {type: flash}
+  - wait: 0.5
+  - cam: {shot: insert, item: photo_threads}
+  - wait: 3.8
+  - say: theo
+    text: "Golden threads. From the Lantern to every house in town. If it goes out, the whole town forgets the way home."
+    expr: worried
+  - say: dot
+    text: "I can fix this! Probably! Maybe!"
+    expr: determined
+    pose: hold
+    prop: sniffer
+  - say: dot
+    text: "The Sniffer pulls the glitches out. But if I flip it backwards... it pushes light IN."
+    expr: excited
+  - say: june
+    text: "Is that safe?"
+    expr: worried
+  - say: dot
+    text: "[nervous laugh] Technically!"
+    expr: grin
+  - say: theo
+    text: "Do it."
+    expr: determined
+  - cam: {shot: wide}
+  - sfx: gadget_whir
+  - act: dot
+    shake: 1.8
+  - fx: {type: drain, from: dot, dur: 2.4}
+  - sfx: glitch
+  - wait: 1.2
+  - say: dot
+    text: "[panicking] Wrong way! Wrong way! It's sucking the light OUT!"
+    expr: scared
+  - say: june
+    text: "Dot! Your switch. It's upside down!"
+    expr: determined
+    pose: point
+  - say: dot
+    text: "Oh. Ohhh. Who labeled this? ...I labeled this."
+    expr: sad
+  - sfx: click
+  - wait: 0.4
+  - cam: {shot: wide, push: 0.1}
+  - sfx: gadget_charge
+  - act: dot
+    shake: 2.0
+    expr: determined
+  - fx: {type: beam, from: dot, dur: 3.5}
+  - wait: 2.2
+  - fx: {type: lantern_bloom}
+  - sfx: magic_swell
+  - wait: 3.8
+  - act: [theo, june, dot]
+    expr: happy
+    pose: cheer
+  - say: biscuit
+    text: "Is it over? Did we win? I would like a sandwich."
+    expr: happy
+  - act: [theo, june, dot]
+    pose: idle
+  - wait: 0.8
+  - say: theo
+    text: "June. There's an envelope here. Blank. And a stamp that says... Saturday."
+    expr: surprised
+  - say: june
+    text: "The letter. Theo, you have to write it."
+    expr: awe
+  - say: theo
+    text: "If I don't write it, I never get it. And we never come here."
+    expr: thinking
+  - say: dot
+    text: "Time loops! I love time loops! I hate time loops! Write it!"
+    expr: excited
+    pose: arms_up
+  - act: theo
+    pose: write
+    prop: letter_open
+    expr: determined
+  - sfx: writing
+  - wait: 3.0
+  - act: theo
+    pose: hold
+    prop: letter
+  - act: courier
+    appear_at: 1500
+  - sfx: shimmer
+  - cam: {shot: medium, on: courier}
+  - say: courier
+    text: "[warmly] Right on time, Mister Bramble."
+  - act: [theo, june, dot]
+    expr: scared
+    jump: true
+  - sfx: boing
+  - act: biscuit
+    expr: scared
+    jump: true
+  - wait: 0.8
+  - say: theo
+    text: "Who... who are you?"
+    expr: surprised
+  - act: courier
+    pose: reach
+  - act: theo
+    prop: null
+  - act: courier
+    prop: letter
+  - say: courier
+    text: "[kindly] Just the mail."
+  - wait: 0.5
+  - cam: {shot: wide}
+  - act: courier
+    vanish: true
+  - sfx: whoosh
+  - fx: {type: pixels, at: courier, count: 90}
+  - wait: 2.4
+
+# ------------------------------------------------------------------ EPILOGUE
+- id: s07
+  set: lookout
+  light: sunset
+  music: finale
+  ambience: evening_wind
+  transition: fade
+  caption: "SATURDAY"
+  cast:
+    june: {x: 820, facing: 1, expr: happy}
+    theo: {x: 1020, facing: -1, expr: happy}
+    dot: {x: 1220, facing: -1, expr: proud, prop: sniffer, pose: hold}
+    biscuit: {x: 640, facing: 1}
+  beats:
+  - cam: {shot: wide, push: 0.06}
+  - wait: 2.0
+  - say: june
+    text: "Mayor Pruitt canceled the demolition. Mister Hollis showed him the plaque. The mill is a historic landmark now."
+    expr: happy
+    pose: talk
+  - say: dot
+    text: "And Mark Seven is a historic invention."
+    expr: proud
+  - say: theo
+    text: "We still don't know who he is. The Night Courier."
+    expr: thinking
+  - say: june
+    text: "Or why his bag said A. L."
+    expr: thinking
+  - say: biscuit
+    text: "Or why nobody has given me a sandwich all week."
+    expr: sad
+  - act: [theo, june, dot]
+    expr: grin
+  - sfx: laugh_soft
+  - wait: 1.2
+  - sfx: bike_bell
+  - fx: {type: pixels, at: june, count: 50}
+  - act: june
+    pose: hold
+    prop: letter
+    expr: surprised
+  - sfx: shimmer
+  - wait: 1.0
+  - cam: {shot: insert, item: envelope_june}
+  - wait: 3.4
+  - say: june
+    text: "[softly] Theo. This one's for me. And it's postmarked... eighteen eighty-seven."
+    expr: awe
+  - say: theo
+    text: "[grinning] Okay. Okay, okay, okay."
+    expr: grin
+  - wait: 1.5
+
+- id: s08
+  set: end_card
+  light: night
+  music: theme
+  transition: iris
+  cast: {}
+  beats:
+  - wait: 1.2
+  - say: biscuit
+    text: "Next time on Pixel Pines... my shadow runs away from home. Frankly, I do not blame it."
+    vo: true
+  - wait: 3.5
